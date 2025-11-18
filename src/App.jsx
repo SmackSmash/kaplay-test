@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import kaplay from 'kaplay';
 import './App.css';
 
 function App() {
   const game = useRef(null);
-  const [keyDownStart, setKeyDownStart] = useState(10);
 
   useEffect(() => {
     const k = kaplay({
@@ -36,7 +35,7 @@ function App() {
 
       obstacle.onUpdate(() => {
         obstacle.time += k.dt();
-        const t = (obstacle.time % 5) / 2;
+        const t = (obstacle.time % 2) / 2;
         obstacle.pos = k.lerp(k.vec2(500, 173), k.vec2(0, 173), t);
       });
 
